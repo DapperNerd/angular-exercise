@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 
 @Component({
@@ -9,21 +8,17 @@ import { DataService } from '../data.service';
   styleUrls: ['./event-booking.component.css']
 })
 export class EventBookingComponent {
-  registerForm: FormGroup;
   submitted = false;
   eventData;
   Seats: any = ['1', '2', '3', '4', '5', '6'];
-  memberFormValues: any = {};
   bookingSuccessfull = false;
 
-  // tslint:disable-next-line: max-line-length
-  constructor(private formBuilder: FormBuilder, private routerUrl: ActivatedRoute, private dataServie: DataService, private router: Router) {
+  constructor(private routerUrl: ActivatedRoute, private dataServie: DataService) {
     const id = this.routerUrl.snapshot.paramMap.get('id');
     this.dataServie.get_event(id).subscribe((res) => {
       this.eventData = res;
     });
   }
-
 
   // To make a array for looping
   createRange(n) {
@@ -42,7 +37,7 @@ export class EventBookingComponent {
     console.log(JSON.stringify(bookingInfo.value));
     this.bookingSuccessfull = true;
     this.submitted = false;
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(bookingInfo.value));
+    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(bookingInfo.value));
   }
 
 }
