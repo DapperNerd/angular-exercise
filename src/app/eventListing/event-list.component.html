@@ -1,0 +1,36 @@
+<h1>My event listing page!!!</h1>
+<!-- <input type="text" placeholder="SEARCH EVENTS"> -->
+<div class="container">
+  <div class="row">
+    <div class="search-hero">
+      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+        placeholder="&#61442;  SEARCH EVENTS">
+    </div>
+    <table class="table table-striped" *ngIf='eventsObservable | async; let items'>
+      <thead>
+        <th>Sr No.</th>
+        <th>Event Name</th>
+        <th>Image</th>
+        <th>Date</th>
+        <th>Available Seats</th>
+        <th>Action</th>
+      </thead>
+      <tbody *ngIf="(items | filter: 'name' :searchText) as results">
+        <tr *ngFor="let event of results; let i = index">
+          <td>{{i+1}}</td>
+          <td>{{event.name}}</td>
+          <td><img src="{{event.image}}" ></td>
+          <td>{{event.date}}</td>
+          <td>{{event.availableSeats}}</td>
+          <td>
+            <button class="btn btn-primary" *ngIf="event.availableSeats > 0" routerLink="/booking/{{event.id}}">Book Now</button>
+            <label *ngIf="event.availableSeats <= 0">Sold Out</label>
+          </td>
+        </tr>
+        <tr *ngIf="results.length === 0">
+          <td class="no-result" colspan="6">No Result!!!!</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
