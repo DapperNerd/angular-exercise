@@ -1,10 +1,10 @@
-<div class="jumbotron">
+<div class="jumbotron booking">
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3" *ngIf="eventData">
-        <h3 class="text-center">{{eventData.name}}</h3>
-        <label *ngIf="bookingSuccessfull">Tickets booked</label>
-        <h4>Number of available seats:- {{eventData.availableSeats}}</h4>
+        <h3 class="text-center festival_name">{{eventData.name}}</h3>
+        <p *ngIf="bookingSuccessfull">Tickets booked</p>
+        <h4 class="available">Number of available seats:- {{eventData.availableSeats}}</h4>
         <form #bookTicket="ngForm">
           <div class="form-group">
             <label>User Name</label>
@@ -64,10 +64,9 @@
               </div>
             </div>
           </div>
-          <div class="form-group">
-            <!-- [disabled]="!bookTicket.valid" -->
-            <button (click)="onSubmit(bookTicket)" [disabled]="bookingSuccessfull"  class="btn btn-primary">Register</button>
-            <button class="btn" [disabled]="bookingSuccessfull" [routerLink]="['/listing']">Cancel</button>
+          <div class="form-group buttons">
+            <button (click)="onSubmit(bookTicket)" [disabled]="bookingSuccessfull"  class="btn register btn-primary">Register</button>
+            <button class="btn cancel" [disabled]="bookingSuccessfull" [routerLink]="['/listing']">Cancel</button>
           </div>
         </form>
       </div>

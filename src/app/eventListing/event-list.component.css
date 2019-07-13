@@ -4,27 +4,161 @@
   width: auto;
 } */
 
-
-
-.container {
-  padding-top: 50px;
-  padding-bottom: 10px;
-  color: #405065;
-}
-
-.search-hero {
-  max-width: 500px;
-  padding-bottom: 50px;
-  margin:auto;
-}
-
-.no-result {
+.table{
+	border: 2px solid #ddd;
+  }
+  
+  .container {
+	padding-top: 30px;
+	padding-bottom: 10px;
+	color: #405065;
+  }
+  .z1asCe {
+	  display: inline-block;
+	  fill: currentColor;
+	  height: 24px;
+	  line-height: 24px;
+	  position: absolute;
+	  right:7px;
+	  top:10px;
+	  width: 24px;
+  }
+  .z1asCe svg {
+	  display: block;
+	  height: 100%;
+	  width: 100%;
+  }
+  .z1asCe {
+	  fill: currentColor;
+	  line-height: 24px;
+  }
+  
+  
+  .search-hero {
+	max-width: 500px;
+	padding-bottom: 50px;
+	margin:auto;
+	position: relative;
+  }
+  .title {
+	  float: left;
+	  width: 100%;
+	  text-align: center;
+	  padding-bottom: 30px;
+  }
+  .no-result {
+	text-align: center;
+  }
+  
+  .form-control {
+	box-shadow: 0 6px 18px 0 #ddd;
+	padding:8px 40px 8px 10px;
+	width: 300px;
+  }
+  .form-control::placeholder  {
+	font-family: FontAwesome;
+  }
+  
+  .cell{
+	display: inline-grid;
+	font-weight: 600;
+	padding: 10px 10px;
+  border-right: 2px solid #ddd;
   text-align: center;
-}
-
-.form-control {
-  box-shadow: 0 10px 40px 0 #B0C1D9;
-}
-.form-control::placeholder  {
-  font-family: FontAwesome;
-}
+  border-bottom: 2px solid #ddd;
+  min-height: 70px;
+  }
+  .cell.last-child{border-right: none;}
+  .item{
+	padding: 0;
+	border-bottom: 2px solid #ddd;
+	margin: 0;
+  }
+  .item-list{
+	  list-style: none;
+	  display: inline-block;
+	  text-align: center;
+	  border-right: 1px solid #ddd;
+	  padding: 10px 0;
+  }
+  .item-list:last-child{
+	border-right: none;
+  }
+  li>img{
+	height: auto; 
+	width:300px;
+  }
+  ul.item:last-child {
+	  border-bottom: none;
+  }
+  
+  @media (max-width: 991px) {
+  li>img{
+	width:210px;
+  }
+  }
+  
+  @media (max-width: 767px) {
+	.content .row{
+	  display: block;
+	}
+	.item{
+	  padding: 20px 0;
+	}
+	.item-list{
+	  border-right: none;
+	}
+	ul:first-child{
+	  padding-top:0 ;
+	}
+	ul:last-child li:last-child{
+	  border:none;
+	}
+  .table .cell{display: none;}
+  li::before{
+	  text-align: left;
+	}
+	li.item-list{text-align: right;border-bottom: 2px solid #ddd;padding: 10px;}
+	.item{border-bottom:0;}
+	.col-xs-12{
+	max-width: 100%;
+  }
+  .cell { 
+	  /* Behave  like a "row" */
+	  border: none;
+	  border-bottom: 1px solid #eee; 
+	  position: relative;
+	  padding-left: 50%; 
+	}
+	
+	li:before { 
+	  /* Now like a table header */
+	  position: absolute;
+	  /* Top/left values mimic padding */
+	  top: 10px;
+	  left: 10px;
+	  width: 45%; 
+	  padding-right: 10px; 
+	  white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	li:nth-of-type(1):before { content: "Sr. No."; }
+	li:nth-of-type(2):before { content: "Event Name"; }
+	li:nth-of-type(3):before { content: "Image"; }
+	li:nth-of-type(4):before { content: "Date"; }
+	li:nth-of-type(5):before { content: "Wars of Trek?"; }
+  
+	li:nth-of-type(6):before { content: "Available Seats"; }
+	li:nth-of-type(7):before { content: "Action"; }
+  .table{margin:10px;}
+  
+  }
+  
+  @media (max-width: 575px) {
+  .row{
+	  display: inline-flex;
+	}
+  }

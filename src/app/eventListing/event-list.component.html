@@ -1,36 +1,49 @@
-<h1>My event listing page!!!</h1>
+
 <!-- <input type="text" placeholder="SEARCH EVENTS"> -->
 <div class="container">
   <div class="row">
+  	<h1 class="title">My event listing page!!!</h1>
     <div class="search-hero">
-      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
-        placeholder="&#61442;  SEARCH EVENTS">
+      <input class="form-control search" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+        placeholder=" SEARCH EVENTS HERE">
+        <span class="z1asCe MZy1Rb"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></span>
     </div>
-    <table class="table table-striped" *ngIf='eventsObservable | async; let items'>
-      <thead>
-        <th>Sr No.</th>
-        <th>Event Name</th>
-        <th>Image</th>
-        <th>Date</th>
-        <th>Available Seats</th>
-        <th>Action</th>
-      </thead>
-      <tbody *ngIf="(items | filter: 'name' :searchText) as results">
-        <tr *ngFor="let event of results; let i = index">
-          <td>{{i+1}}</td>
-          <td>{{event.name}}</td>
-          <td><img src="{{event.image}}" ></td>
-          <td>{{event.date}}</td>
-          <td>{{event.availableSeats}}</td>
-          <td>
+    <div class="table table-striped" *ngIf='eventsObservable | async; let items'>
+      <!-- <thead> -->
+        <div class="cell col-sm-1 col-lg-1">Sr No.</div>
+        <div class="cell col-sm-1 col-lg-1">Event Name</div>
+        <div class="cell col-sm-4 col-lg-4">Image</div>
+        <div class="cell col-sm-2 col-lg-2">Date</div>
+        <div class="cell col-sm-2 col-lg-2">Available Seats</div>
+        <div class="cell col-sm-2 col-lg-2 last-child">Action</div>
+      <!-- </thead> -->
+      <div class="content" *ngIf="(items | filter: 'name' :searchText) as results">
+        <ul class="item row" *ngFor="let event of results; let i = index">
+          <li class="item-list col-xs-12 col-sm-1 col-lg-1">{{i+1}}</li>
+          <li class="item-list col-xs-12 col-sm-1 col-lg-1">{{event.name}}</li>
+          <li class="item-list col-xs-12 col-sm-4 col-lg-4"><img src="{{event.image}}" ></li>
+          <li class="item-list col-xs-12 col-sm-2 col-lg-2">{{event.date}}</li>
+          <li class="item-list col-xs-12 col-sm-2 col-lg-2">{{event.availableSeats}}</li>
+          <li class="item-list col-xs-12 col-sm-2 col-lg-2">
             <button class="btn btn-primary" *ngIf="event.availableSeats > 0" routerLink="/booking/{{event.id}}">Book Now</button>
             <label *ngIf="event.availableSeats <= 0">Sold Out</label>
-          </td>
-        </tr>
-        <tr *ngIf="results.length === 0">
-          <td class="no-result" colspan="6">No Result!!!!</td>
-        </tr>
-      </tbody>
-    </table>
+          </li>
+        </ul>
+        <ul *ngIf="results.length === 0">
+          <li class="no-result" colspan="6">No Result!!!!</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
+ <!-- <script>
+        let d = new Date();
+        alert("Today's date is " + d);
+    </script>
+<script type="text/javascript">
+	function responsivecolumn(){
+		if ($(document).width() < 768){
+			$('.content ul').removeClass('row');
+		}
+	}
+</script> -->

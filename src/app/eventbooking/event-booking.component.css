@@ -1,0 +1,47 @@
+.booking label{
+	width: 30%;
+	display: inline-block;
+	position: relative;
+}
+.booking .festival_name{
+	font-weight: bold;
+	font-style: italic;
+	text-decoration: underline;
+	margin-bottom: 40px;
+}
+.booking .available{
+	margin-bottom: 40px;
+}
+.booking .form-control,.booking .custom-select{
+	width: 70%;
+	display: inline-block;
+}
+.booking label::after {
+    content: ":";
+    position: absolute;
+    right: 20px;
+}
+.booking .form-group{
+	margin-bottom: 2rem;
+}
+.booking .buttons{
+	text-align: center;
+	margin-top: 50px;
+}
+.booking .cancel{
+	background-color: #fff;
+	border-color: #fff;
+	margin-left: 20px;
+}
+.booking .btn{
+	padding: .375rem 1.75rem;
+}
+
+@media (max-width: 991px) {
+	.booking label,.booking .form-control,.booking .custom-select{
+		width: 100%;
+	}
+	.booking label:after{
+		display: none;
+	}
+}
